@@ -2,11 +2,11 @@
 
 This is a CUDA C implementation of [Fast and Accurate Large-Scale Stereo Reconstruction Using Variational Methods [2]](https://www.cv-foundation.org/openaccess/content_iccv_workshops_2013/W21/html/Kuschk_Fast_and_Accurate_2013_ICCV_paper.html) and is supplied as part of the supplementary material to my honours thesis. Some of my results are below.
 
-| ![Cones animation](cones.gif) |
+| ![Cones animation](cones.webp) |
 |:--:|
 | *Animation of disparity images from each iteration of TGV's gradient descent* |
 
-| ![KITTI animation](kitti.gif) |
+| ![KITTI animation](kitti.webp) |
 |:--:|
 | *Animation of disparity images from each iteration of TGV's gradient descent* |
 
