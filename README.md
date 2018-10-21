@@ -13,9 +13,9 @@ This is a CUDA C implementation of [Fast and Accurate Large-Scale Stereo Reconst
 <table>
   <tr><td>Left image</td><td><img src="kitti/reference.png" /></td></tr>
   <tr><td>Right image</td><td><img src="kitti/target.png" /></td></tr>
-  <tr><td>Estimated disparity image<br /> **MC**</td><td><img src="kitti/disparity-estimate-MC.png" /></td></tr>
-  <tr><td>Estimated disparity image<br /> **MC+AC**</td><td><img src="kitti/disparity-estimate-MC-AC.png" /></td></tr>
-  <tr><td>Estimated disparity image<br /> **MC+AC+TGV**</td><td><img src="kitti/disparity-estimate-MC-AC-TGV.png" /></td></tr>
+  <tr><td>Estimated disparity image<br /> <strong>MC</strong></td><td><img src="kitti/disparity-estimate-MC.png" /></td></tr>
+  <tr><td>Estimated disparity image<br /> <strong>MC+AC</strong></td><td><img src="kitti/disparity-estimate-MC-AC.png" /></td></tr>
+  <tr><td>Estimated disparity image<br /> <strong>MC+AC+TGV</strong></td><td><img src="kitti/disparity-estimate-MC-AC-TGV.png" /></td></tr>
   <tr><td>Ground truth disparity image</td><td><img src="kitti/ground-truth.png" /></td></tr>
 </table>
 
