@@ -1,6 +1,6 @@
 # Stereo implementation of total generalized variation (TGV) on GPU
 
-This is a CUDA C implementation of [Fast and Accurate Large-Scale Stereo Reconstruction Using Variational Methods [2]](https://www.cv-foundation.org/openaccess/content_iccv_workshops_2013/W21/html/Kuschk_Fast_and_Accurate_2013_ICCV_paper.html) and is supplied as part of the supplementary material to my honours thesis. To my knowledge this is the only open source implementation od stereo TGV. Results below are from the first scene in the [2015 KITTI stereo evaluate data set](http://www.cvlibs.net/datasets/kitti/eval_scene_flow.php?benchmark=stereo).
+This is a CUDA C implementation of [Fast and Accurate Large-Scale Stereo Reconstruction Using Variational Methods [2]](https://www.cv-foundation.org/openaccess/content_iccv_workshops_2013/W21/html/Kuschk_Fast_and_Accurate_2013_ICCV_paper.html) and is supplied as part of the supplementary material to my honours thesis. To my knowledge this is the only open source implementation of stereo TGV. Results below are from the first scene in the [2015 KITTI stereo evaluate data set](http://www.cvlibs.net/datasets/kitti/eval_scene_flow.php?benchmark=stereo).
 
 | ![Cones animation](cones.webp) |
 |:--:|
