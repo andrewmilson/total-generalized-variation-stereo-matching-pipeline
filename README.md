@@ -113,7 +113,7 @@ Part of my research was learning binary descriptors using genetic algorithms (GA
 <table>
   <tr>
     <td>
-      <img src="./descriptors/GA-RC-BRIEF.png"/><br/>
+      <img src="./descriptors/GA-R-BRIEF.png"/><br/>
       <strong>KITTI 3px thresh err:</strong> 8.26%
     </td>
     <td><pre width="200"><code class="bash">export GA_R_DESCRIPTOR=131,135,90,210,93,244,253,168,158,162,104,36,\
