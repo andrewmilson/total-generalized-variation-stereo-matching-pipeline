@@ -10,24 +10,27 @@ This is a CUDA C implementation of [Fast and Accurate Large-Scale Stereo Reconst
 |:--:|
 | *Animation of disparity images from each iteration of TGV's gradient descent* |
 
+
+**Key:**
++ MC = Matching costs
++ CA = Cost aggregation[2]
++ TGV = Total generalized variation[1]
+
 <table>
   <tr><td>Left image</td><td><img src="kitti/reference.png" /></td></tr>
   <tr><td>Right image</td><td><img src="kitti/target.png" /></td></tr>
   <tr><td>Estimated disparity image<br /> <strong>MC</strong></td><td><img src="kitti/disparity-estimate-MC.png" /></td></tr>
-  <tr><td>Estimated disparity image<br /> <strong>MC+AC</strong></td><td><img src="kitti/disparity-estimate-MC-AC.png" /></td></tr>
-  <tr><td>Estimated disparity image<br /> <strong>MC+AC+TGV</strong></td><td><img src="kitti/disparity-estimate-MC-AC-TGV.png" /></td></tr>
+  <tr><td>Estimated disparity image<br /> <strong>MC+CA</strong></td><td><img src="kitti/disparity-estimate-MC-AC.png" /></td></tr>
+  <tr><td>Estimated disparity image<br /> <strong>MC+CA+TGV</strong></td><td><img src="kitti/disparity-estimate-MC-AC-TGV.png" /></td></tr>
   <tr><td>Ground truth disparity image</td><td><img src="kitti/ground-truth.png" /></td></tr>
 </table>
-
-+ Matching costs (MC)
-+ Cost aggregation (AC[2])
-+ Total generalized variation (TGV[1])
 
 # Requirements
 
 + CUDA
 + CMake
 + Optional: ImageMagic to convert `.pgm` to `.png` -> `mogrify -format png *.pgm`
+
 
 # Usage
 
@@ -79,6 +82,86 @@ export CENSUS_DESCRIPTOR="90,144,91,144,92,144,93,144,94,144,95,144,\
 #define LAMBDA_D 0.4f
 ...
 ```
+
+# Descriptors
+
+Part of my research was learning binary descriptors using genetic algorithms (GAs) for use in stereo matching. The defenition of the some descriptors from the paper are listed here.
+
+![Results](./results.png)
+
+### 1. Census (C)
+![C](./descriptors/census-BRIEF.png)
+
+**KITTI 3-pixel error threshold:** 10.96%
+```
+export CENSUS_DESCRIPTOR="90,144,91,144,92,144,93,144,94,144,95,144,\
+96,144,107,144,108,144,109,144,110,144,111,144,112,144,113,144,124,144,\
+125,144,126,144,127,144,128,144,129,144,130,144,141,144,142,144,143,144,\
+144,144,145,144,146,144,147,144,158,144,159,144,160,144,161,144,162,144,\
+163,144,164,144,175,144,176,144,177,144,178,144,179,144,180,144,181,144,\
+192,144,193,144,194,144,195,144,196,144,197,144,198,144,144,144,144,144,\
+144,144,144,144,144,144,144,144,144,144,144,144,144,144,144,144,144,144,\
+144,144,144,144,144,144,144,144"
+```
+
+
+### 2. GA optimized (GA-R)
+
+<table>
+  <tr>
+    <td>
+      <img src="./descriptors/GA-R-BRIEF.png"/><br/>
+      <strong>KITTI 3px thresh err:</strong> 8.26%
+    </td>
+    <td><pre width="200"><code class="bash">export CENSUS_DESCRIPTOR="90,144,91,144,92,144,93,144,94,144,95,144,\
+    96,144,107,144,108,144,109,144,110,144,111,144,112,144,113,144,124,144,\
+    125,144,126,144,127,144,128,144,129,144,130,144,141,144,142,144,143,144,\
+    144,144,145,144,146,144,147,144,158,144,159,144,160,144,161,144,162,144,\
+    163,144,164,144,175,144,176,144,177,144,178,144,179,144,180,144,181,144,\
+    192,144,193,144,194,144,195,144,196,144,197,144,198,144,144,144,144,144,\
+    144,144,144,144,144,144,144,144,144,144,144,144,144,144,144,144,144,144,\
+    144,144,144,144,144,144,144,144"</code></pre></td>
+  </tr>
+</table>
+
+**KITTI 3px thresh err:** 8.26%
+
+<pre><code class="bash">export CENSUS_DESCRIPTOR="90,144,91,144,92,144,93,144,94,144,95,144,\
+96,144,107,144,108,144,109,144,110,144,111,144,112,144,113,144,124,144,\
+125,144,126,144,127,144,128,144,129,144,130,144,141,144,142,144,143,144,\
+144,144,145,144,146,144,147,144,158,144,159,144,160,144,161,144,162,144,\
+163,144,164,144,175,144,176,144,177,144,178,144,179,144,180,144,181,144,\
+192,144,193,144,194,144,195,144,196,144,197,144,198,144,144,144,144,144,\
+144,144,144,144,144,144,144,144,144,144,144,144,144,144,144,144,144,144,\
+144,144,144,144,144,144,144,144"</code></pre>
+
+```
+export CENSUS_DESCRIPTOR="90,144,91,144,92,144,93,144,94,144,95,144,\
+96,144,107,144,108,144,109,144,110,144,111,144,112,144,113,144,124,144,\
+125,144,126,144,127,144,128,144,129,144,130,144,141,144,142,144,143,144,\
+144,144,145,144,146,144,147,144,158,144,159,144,160,144,161,144,162,144,\
+163,144,164,144,175,144,176,144,177,144,178,144,179,144,180,144,181,144,\
+192,144,193,144,194,144,195,144,196,144,197,144,198,144,144,144,144,144,\
+144,144,144,144,144,144,144,144,144,144,144,144,144,144,144,144,144,144,\
+144,144,144,144,144,144,144,144"
+```
+
+### 2. GA optimized, census seed (GA-RC)
+![C](./descriptors/GA-RC-BRIEF.png)
+
+**KITTI 3-pixel error threshold:** 8.14%
+
+```
+export CENSUS_DESCRIPTOR="90,144,91,144,92,144,93,144,94,144,95,144,\
+96,144,107,144,108,144,109,144,110,144,111,144,112,144,113,144,124,144,\
+125,144,126,144,127,144,128,144,129,144,130,144,141,144,142,144,143,144,\
+144,144,145,144,146,144,147,144,158,144,159,144,160,144,161,144,162,144,\
+163,144,164,144,175,144,176,144,177,144,178,144,179,144,180,144,181,144,\
+192,144,193,144,194,144,195,144,196,144,197,144,198,144,144,144,144,144,\
+144,144,144,144,144,144,144,144,144,144,144,144,144,144,144,144,144,144,\
+144,144,144,144,144,144,144,144"
+```
+
 
 # Related Publications
 
